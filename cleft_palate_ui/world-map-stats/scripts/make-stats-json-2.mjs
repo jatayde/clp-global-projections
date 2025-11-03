@@ -28,9 +28,11 @@ for (const row of rows) {
   for (const year of years) {
     const clpCol = `CL/P Estimated ${year} (95% CI)`;
     const dalyCol = `DALY Estimate ${year} (95% CI)`;
+    const costCol = `Total Estimate`
 
     const clp = row[clpCol];
     const daly = row[dalyCol];
+    const cost = row[costCol];
 
     const clpNum = parseFirstNumber(clp);
     const dalyNum = parseFirstNumber(daly);
@@ -40,7 +42,9 @@ for (const row of rows) {
       daly_estimate: daly,
       clp_number: clpNum, // numeric-only value
       daly_number: dalyNum,
+      estimated_cost: cost,
     };
+    console.log('beep', cost)
   }
 }
 

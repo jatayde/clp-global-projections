@@ -88,25 +88,28 @@ export default function MapWorld({ year, data, title = "" }) {
   }, [perYear]);
 
   function getColor(val) {
-    if (!Number.isFinite(val)) return "#e5e5e5";
-    if (maxVal === minVal) return "#4a90e2";
+  if (!Number.isFinite(val)) return "#e5e5e5"; // gray for missing
+  if (maxVal === minVal) return "#9AC5B7";     // midpoint fallback
 
-    const safeVal = Math.max(val, 1);
-    const safeMin = Math.max(minVal, 1);
-    const safeMax = Math.max(maxVal, 1);
-    const ratio = Math.log10(safeVal / safeMin) / Math.log10(safeMax / safeMin);
+  // Log-scale normalization to handle wide range
+  const safeVal = Math.max(val, 1);
+  const safeMin = Math.max(minVal, 1);
+  const safeMax = Math.max(maxVal, 1);
+  const ratio = Math.log10(safeVal / safeMin) / Math.log10(safeMax / safeMin);
 
-    if (ratio < 0.1) return "#eff6ff";
-    if (ratio < 0.2) return "#dbeafe";
-    if (ratio < 0.3) return "#bfdbfe";
-    if (ratio < 0.4) return "#93c5fd";
-    if (ratio < 0.5) return "#60a5fa";
-    if (ratio < 0.6) return "#3b82f6";
-    if (ratio < 0.7) return "#2563eb";
-    if (ratio < 0.8) return "#1d4ed8";
-    if (ratio < 0.9) return "#1e40af";
-    return "#1e3a8a";
-  }
+  // Custom light→dark blue-green gradient
+  if (ratio < 0.1) return "#EEF5F0";
+  if (ratio < 0.2) return "#DBEDE4";
+  if (ratio < 0.3) return "#C7E1D5";
+  if (ratio < 0.4) return "#B1D3C6";
+  if (ratio < 0.5) return "#9AC5B7";
+  if (ratio < 0.6) return "#82B4A8";
+  if (ratio < 0.7) return "#6AA19A";
+  if (ratio < 0.8) return "#538A90";
+  if (ratio < 0.9) return "#3E708A";
+  return "#2B4F82";
+}
+
 
   return (
     <div style={{ width: "100%", position: "relative" }}>
@@ -144,8 +147,9 @@ export default function MapWorld({ year, data, title = "" }) {
                       x: e.clientX,
                       y: e.clientY,
                       name,
-                      ai: row?.clp_estimate,
-                      ad: row?.daly_estimate,
+                      clp: row?.clp_estimate,
+                      daly: row?.daly_estimate,
+                      cost: row?.estimated_cost,
                     })
                   }
                   onMouseMove={(e) =>
@@ -183,10 +187,13 @@ export default function MapWorld({ year, data, title = "" }) {
           <strong>{tip.name}</strong>
           <div style={{ marginTop: 4 }}>
             <div>
-              <em>CL/P Estimate:</em> {tip.ai || "NaN"}
+              <em>CL/P Estimate:</em> {tip.clp || "NaN"}
             </div>
             <div>
-              <em>DALY Estimate:</em> {tip.ad || "NaN"}
+              <em>DALY Estimate:</em> {tip.daly || "NaN"}
+            </div>
+            <div>
+              <em>Estimated Cost:</em> {tip.cost ? `$${tip.cost}` : "NaN"}
             </div>
           </div>
         </div>

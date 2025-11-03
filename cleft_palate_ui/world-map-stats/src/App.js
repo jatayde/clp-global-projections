@@ -46,7 +46,7 @@ export default function App() {
                 borderRadius: 999,
                 border: "1px solid #bbb",
                 cursor: "pointer",
-                background: isActive ? "#0d6efd" : "#fff",
+                background: isActive ? "#538A90" : "#f1f5f9",
                 color: isActive ? "#fff" : "#111",
                 fontWeight: isActive ? 600 : 500,
                 boxShadow: isActive ? "0 2px 6px rgba(13,110,253,0.3)" : "none",
