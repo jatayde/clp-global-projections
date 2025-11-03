@@ -54,7 +54,6 @@ const ALIASES = {
 export default function MapWorld({ year, data, title = "" }) {
   const [tip, setTip] = useState(null);
 
-  // 1️⃣ Flatten your data for the chosen year
   const perYear = useMemo(() => {
     const flat = {};
     for (const [country, years] of Object.entries(data || {})) {
@@ -111,14 +110,19 @@ export default function MapWorld({ year, data, title = "" }) {
   }
 
   return (
-    <div style={{ width: "100%", position: "relative" }}>
-      {title && (
-        <h2 style={{ textAlign: "center", margin: "12px 0" }}>{title}</h2>
-      )}
-
+    <div
+      style={{
+        width: "100%",
+        position: "relative",
+        overflow: "hidden",
+        lineHeight: 0,
+      }}
+    >
       <ComposableMap
-        projectionConfig={{ scale: 155 }}
+        projectionConfig={{ scale: 155, center: [15, 0] }}
+        viewBox="0 75 760 520"
         style={{ width: "100%", height: "auto" }}
+        preserveAspectRatio="xMidYMin meet"
       >
         <Geographies geography={GEO_URL}>
           {({ geographies }) =>

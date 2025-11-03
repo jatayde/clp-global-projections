@@ -11,16 +11,16 @@ export default function App() {
     <div
       style={{
         minHeight: "100vh",
-        fontFamily: "system-ui, sans-serif",
+        fontFamily: "Helvetica Neue",
         paddingBottom: 24,
         backgroundColor: "#f1f5f9",
       }}
     >
       <header style={{ textAlign: "center", padding: 16 }}>
-        <h1 style={{ margin: 0 }}>
+        <h2 style={{ margin: 0 }}>
           Projecting the Future Incidence of Cleft Deformities and the
           Associated Economic Burden of 199 Countries
-        </h1>
+        </h2>
         <h4>
           The Department of Plastic and Reconstructive Surgery, The Ohio State
           University Wexner Medical Center
@@ -65,7 +65,7 @@ export default function App() {
       </div>
 
       {/* Map for selected year */}
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1500, margin: "0 auto" }}>
         <MapWorld
           year={year}
           data={estimatedStats}
