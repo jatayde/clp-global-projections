@@ -114,8 +114,6 @@ export default function MapWorld({ year, data, title = "" }) {
       style={{
         width: "100%",
         position: "relative",
-        overflow: "hidden",
-        lineHeight: 0,
       }}
     >
       <ComposableMap
