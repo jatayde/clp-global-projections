@@ -30,12 +30,15 @@ function findCol(headers, patterns, label) {
     return patterns.some((p) =>
       typeof p === "string"
         ? cleaned.toLowerCase() === p.toLowerCase()
-        : p.test(cleaned)
+        : p.test(cleaned),
     );
   };
   const found = headers.find(tryMatch);
   if (!found) {
-    console.warn(`⚠️  Column not found for "${label}". Tried patterns:`, patterns);
+    console.warn(
+      `⚠️  Column not found for "${label}". Tried patterns:`,
+      patterns,
+    );
   }
   return found || null;
 }
@@ -70,7 +73,7 @@ function main() {
       /^Adjusted Incidence Rate per Birth Population$/i, // some files include "Rate"
       /Adjusted.*Incidence.*Birth Population/i,
     ],
-    "Adjusted Incidence per Birth Population"
+    "Adjusted Incidence per Birth Population",
   );
 
   const adjIncLowerCol = findCol(
@@ -79,7 +82,7 @@ function main() {
       /^Adjusted Incidence Rate per Birth Population \(Lower\)$/i,
       /Adjusted.*Incidence.*Birth Population.*\(Lower\)/i,
     ],
-    "Adjusted Incidence Rate per Birth Population (Lower)"
+    "Adjusted Incidence Rate per Birth Population (Lower)",
   );
 
   const adjIncUpperCol = findCol(
@@ -88,7 +91,7 @@ function main() {
       /^Adjusted Incidence Rate per Birth Population \(Upper\)$/i,
       /Adjusted.*Incidence.*Birth Population.*\(Upper\)/i,
     ],
-    "Adjusted Incidence Rate per Birth Population (Upper)"
+    "Adjusted Incidence Rate per Birth Population (Upper)",
   );
 
   const adjDalyCol = findCol(
@@ -97,7 +100,7 @@ function main() {
       /^Adjusted Incidence of DALYs per Birth Population$/i,
       /Adjusted.*DALYs.*Birth Population/i,
     ],
-    "Adjusted Incidence of DALYs per Birth Population"
+    "Adjusted Incidence of DALYs per Birth Population",
   );
 
   const adjDalyLowerCol = findCol(
@@ -106,7 +109,7 @@ function main() {
       /^Adjusted Incidence of DALYs per Birth Population \(Lower\)$/i,
       /Adjusted.*DALYs.*Birth Population.*\(Lower\)/i,
     ],
-    "Adjusted Incidence of DALYs per Birth Population (Lower)"
+    "Adjusted Incidence of DALYs per Birth Population (Lower)",
   );
 
   const adjDalyUpperCol = findCol(
@@ -115,7 +118,7 @@ function main() {
       /^Adjusted Incidence of DALYs per Birth Population \(Upper\)$/i,
       /Adjusted.*DALYs.*Birth Population.*\(Upper/i,
     ],
-    "Adjusted Incidence of DALYs per Birth Population (Upper)"
+    "Adjusted Incidence of DALYs per Birth Population (Upper)",
   );
 
   console.log("✅ Matched columns:", {
@@ -134,7 +137,9 @@ function main() {
   for (const r of rows) {
     const yearStr = String(r[yearCol]).trim();
     // tolerate numeric years in the sheet (2030) vs strings "2030"
-    const yr = YEARS.find((y) => y === yearStr || Number(y) === Number(yearStr));
+    const yr = YEARS.find(
+      (y) => y === yearStr || Number(y) === Number(yearStr),
+    );
     if (!yr) continue;
 
     const country = String(r[countryCol] ?? "").trim();
@@ -158,12 +163,15 @@ function main() {
 
   // Debug: print a few samples to confirm parsing
   const sample = Object.entries(stats).slice(0, 5);
-  console.log("🔎 Sample parsed entries:", JSON.stringify(Object.fromEntries(sample), null, 2));
+  console.log(
+    "🔎 Sample parsed entries:",
+    JSON.stringify(Object.fromEntries(sample), null, 2),
+  );
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(OUT_STATS, JSON.stringify(stats, null, 2));
   console.log(
-    `✅ Wrote ${OUT_STATS} with ${Object.keys(stats).length} countries across years ${YEARS.join(", ")}`
+    `✅ Wrote ${OUT_STATS} with ${Object.keys(stats).length} countries across years ${YEARS.join(", ")}`,
   );
 }
 

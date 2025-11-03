@@ -8,7 +8,15 @@ export default function App() {
   const [year, setYear] = useState("2030");
 
   return (
-    <div style={{ minHeight: "100vh", fontFamily: "system-ui, sans-serif", paddingBottom: 24, backgroundColor: "#f1f5f9", fontFamily: "Lato"}}>
+    <div
+      style={{
+        minHeight: "100vh",
+        fontFamily: "system-ui, sans-serif",
+        paddingBottom: 24,
+        backgroundColor: "#f1f5f9",
+        fontFamily: "Lato",
+      }}
+    >
       <header style={{ textAlign: "center", padding: 16 }}>
         <h1 style={{ margin: 0 }}>CL/P Incidence and DALYs (CI 95%)</h1>
       </header>
@@ -52,7 +60,13 @@ export default function App() {
 
       {/* Map for selected year */}
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <MapWorld year={year} data={estimatedStats} title={`Global – ${year}`} metric="incidence" scale="linear" />
+        <MapWorld
+          year={year}
+          data={estimatedStats}
+          title={`Global – ${year}`}
+          metric="incidence"
+          scale="linear"
+        />
       </div>
     </div>
   );

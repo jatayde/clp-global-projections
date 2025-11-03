@@ -14,7 +14,9 @@ const stats = {};
 
 function parseFirstNumber(value) {
   if (!value) return null;
-  const match = String(value).replace(/,/g, "").match(/[\d.]+/);
+  const match = String(value)
+    .replace(/,/g, "")
+    .match(/[\d.]+/);
   return match ? Number(match[0]) : null;
 }
 
@@ -26,7 +28,7 @@ for (const row of rows) {
   for (const year of years) {
     const clpCol = `CL/P Estimated ${year} (95% CI)`;
     const dalyCol = `DALY Estimate ${year} (95% CI)`;
-    
+
     const clp = row[clpCol];
     const daly = row[dalyCol];
 
