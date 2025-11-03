@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/clp-global-projections/static/css/main.92c8d4eb.css",
-    "main.js": "/clp-global-projections/static/js/main.8f471c4a.js",
+    "main.js": "/clp-global-projections/static/js/main.e921bf1e.js",
     "index.html": "/clp-global-projections/index.html",
     "main.92c8d4eb.css.map": "/clp-global-projections/static/css/main.92c8d4eb.css.map",
-    "main.8f471c4a.js.map": "/clp-global-projections/static/js/main.8f471c4a.js.map"
+    "main.e921bf1e.js.map": "/clp-global-projections/static/js/main.e921bf1e.js.map"
   },
   "entrypoints": [
     "static/css/main.92c8d4eb.css",
-    "static/js/main.8f471c4a.js"
+    "static/js/main.e921bf1e.js"
   ]
 }
