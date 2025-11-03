@@ -14,11 +14,17 @@ export default function App() {
         fontFamily: "system-ui, sans-serif",
         paddingBottom: 24,
         backgroundColor: "#f1f5f9",
-        fontFamily: "Lato",
       }}
     >
       <header style={{ textAlign: "center", padding: 16 }}>
-        <h1 style={{ margin: 0 }}>CL/P Incidence and DALYs (CI 95%)</h1>
+        <h1 style={{ margin: 0 }}>
+          Projecting the Future Incidence of Cleft Deformities and the
+          Associated Economic Burden of 199 Countries
+        </h1>
+        <h4>
+          The Department of Plastic and Reconstructive Surgery, The Ohio State
+          University Wexner Medical Center
+        </h4>
       </header>
 
       {/* Tabs */}
@@ -67,6 +73,20 @@ export default function App() {
           metric="incidence"
           scale="linear"
         />
+      </div>
+      <div
+        style={{
+          position: "fixed",
+          bottom: "10px",
+          left: "10px",
+          fontSize: "0.85em",
+          color: "#555",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          padding: "4px 8px",
+          borderRadius: "6px",
+        }}
+      >
+        95% Confidence Interval
       </div>
     </div>
   );

@@ -88,28 +88,27 @@ export default function MapWorld({ year, data, title = "" }) {
   }, [perYear]);
 
   function getColor(val) {
-  if (!Number.isFinite(val)) return "#e5e5e5"; // gray for missing
-  if (maxVal === minVal) return "#9AC5B7";     // midpoint fallback
+    if (!Number.isFinite(val)) return "#e5e5e5"; // gray for missing
+    if (maxVal === minVal) return "#9AC5B7"; // midpoint fallback
 
-  // Log-scale normalization to handle wide range
-  const safeVal = Math.max(val, 1);
-  const safeMin = Math.max(minVal, 1);
-  const safeMax = Math.max(maxVal, 1);
-  const ratio = Math.log10(safeVal / safeMin) / Math.log10(safeMax / safeMin);
+    // Log-scale normalization to handle wide range
+    const safeVal = Math.max(val, 1);
+    const safeMin = Math.max(minVal, 1);
+    const safeMax = Math.max(maxVal, 1);
+    const ratio = Math.log10(safeVal / safeMin) / Math.log10(safeMax / safeMin);
 
-  // Custom light→dark blue-green gradient
-  if (ratio < 0.1) return "#EEF5F0";
-  if (ratio < 0.2) return "#DBEDE4";
-  if (ratio < 0.3) return "#C7E1D5";
-  if (ratio < 0.4) return "#B1D3C6";
-  if (ratio < 0.5) return "#9AC5B7";
-  if (ratio < 0.6) return "#82B4A8";
-  if (ratio < 0.7) return "#6AA19A";
-  if (ratio < 0.8) return "#538A90";
-  if (ratio < 0.9) return "#3E708A";
-  return "#2B4F82";
-}
-
+    // Custom light→dark blue-green gradient
+    if (ratio < 0.1) return "#EEF5F0";
+    if (ratio < 0.2) return "#DBEDE4";
+    if (ratio < 0.3) return "#C7E1D5";
+    if (ratio < 0.4) return "#B1D3C6";
+    if (ratio < 0.5) return "#9AC5B7";
+    if (ratio < 0.6) return "#82B4A8";
+    if (ratio < 0.7) return "#6AA19A";
+    if (ratio < 0.8) return "#538A90";
+    if (ratio < 0.9) return "#3E708A";
+    return "#2B4F82";
+  }
 
   return (
     <div style={{ width: "100%", position: "relative" }}>

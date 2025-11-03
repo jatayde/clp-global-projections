@@ -28,7 +28,7 @@ for (const row of rows) {
   for (const year of years) {
     const clpCol = `CL/P Estimated ${year} (95% CI)`;
     const dalyCol = `DALY Estimate ${year} (95% CI)`;
-    const costCol = `Total Estimate`
+    const costCol = `Total Estimate`;
 
     const clp = row[clpCol];
     const daly = row[dalyCol];
@@ -44,7 +44,7 @@ for (const row of rows) {
       daly_number: dalyNum,
       estimated_cost: cost,
     };
-    console.log('beep', cost)
+    console.log("beep", cost);
   }
 }
 
