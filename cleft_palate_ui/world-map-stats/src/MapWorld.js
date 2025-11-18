@@ -117,8 +117,8 @@ export default function MapWorld({ year, data, title = "" }) {
       }}
     >
       <ComposableMap
-        projectionConfig={{ scale: 155, center: [15, 0] }}
-        viewBox="0 75 760 520"
+        projectionConfig={{ scale: 155, center: [10, 0] }}
+        viewBox="0 75 800 600"
         style={{ width: "100%", height: "auto" }}
         preserveAspectRatio="xMidYMin meet"
       >
